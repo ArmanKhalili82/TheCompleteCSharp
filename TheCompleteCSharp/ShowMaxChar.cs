@@ -19,5 +19,36 @@ namespace TheCompleteCSharp
                 Console.WriteLine("{0}: {1}", res.Key, r);
             }
         }
+
+        public void Findname()
+        {
+            Dictionary<char, int> dict = new Dictionary<char, int>();
+            Console.WriteLine("Enter Your Name:");
+            var word = Console.ReadLine();
+            word = word.ToLower();
+
+            int max = 0;
+
+            foreach (char c in word)
+            {
+                int i;
+                dict.TryGetValue(c, out i);
+                i++;
+                if (i > max)
+                {
+                    max = i;
+                }
+                dict[c] = i;
+            }
+
+            foreach (KeyValuePair<char, int> chars in dict)
+            {
+                if (chars.Value == max)
+                {
+                    Console.WriteLine("{0}: {1}", chars.Key, chars.Value);
+                }
+            }
+
+        }
     }
 }
